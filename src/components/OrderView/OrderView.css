@@ -1,0 +1,18 @@
+.orderViewDtl{
+    border-radius: 30px;
+    margin: 20px;
+    padding: 30px;
+    box-shadow: 0 0  0 2px rgb(255,255,255),
+                0.3em 0.3em 1em rgba(0,0,0,0.3); 
+}
+.userInfo p, .carInfo p{
+    color: lightseagreen;
+}
+.userInfo span, .carInfo span{
+    color: rgb(100, 100, 100);
+    font-weight: 500;
+}
+.userInfo h5, .carInfo h5{
+    color: lightseagreen;
+    border-bottom: 1px solid lightgray;
+}

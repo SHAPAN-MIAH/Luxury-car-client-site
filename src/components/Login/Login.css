@@ -1,0 +1,57 @@
+
+.google-btn {
+    padding: 5px 20px;
+    width: 350px;
+    margin-top: 5px;
+    border-radius: 30px;
+    border: none;
+    box-shadow: 
+    0 0  0 1px rgb(255,255,255),
+    0.3em 0.3em .5em rgba(0,0,0,0.3);
+    
+}
+.google-btn .gIcon{
+    color: lightseagreen;
+}
+
+button img{
+    width: 25px;
+    margin-right: 20px;
+
+}
+.login-container{
+    text-align: center;
+    margin: 50px 0px;
+}
+
+.formContainer{
+    width: 400px;
+    margin: auto;
+    padding: 40px 0px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+.formContainer h5{
+    text-align: left;
+    margin-left: 25px;
+    margin-bottom: 20px;
+}
+form input{
+    width: 350px;
+    margin-bottom: 15px;
+    padding: 5px 0px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid lightgray;
+}
+#submitBtn{
+    border: none;
+    background: lightseagreen;
+    color: white
+}
+
+.loginToggle strong{
+    cursor: pointer;
+    color: lightseagreen;
+}

@@ -1,0 +1,62 @@
+.checkOut{
+    width: 800px;
+    padding: 40px;
+    margin: auto;
+    margin-top: 30px;
+    border-radius: 30px;
+    background: rgb(241, 241, 241);
+    box-shadow: 
+    0 0  0 2px rgb(255,255,255),
+    0.3em 0.3em 1em rgba(0,0,0,0.3);
+}
+.checkOut-title, .checkOut-value{
+    display: flex;
+}
+.checkOut-title{
+    margin-bottom: 20px;
+    color: rgb(20, 20, 20);
+}
+.checkOut-title h6, .checkOut-value p{
+    width: 350px;
+    margin-left: 80px;
+}
+.checkOut-value p{
+    color: rgb(77, 77, 77);
+}
+.checkTitle{
+    text-align: center;
+    margin-top: 100px;
+    color: lightseagreen;
+}
+#checkOutBtn{
+    margin-top: 20px;
+    margin-left: 490px;
+    padding: 7px 30px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background: lightseagreen;
+    color: white;
+}
+#checkOutBtn:hover{
+    background: rgb(39, 124, 120);
+}
+
+@media(max-width: 768px){
+    .checkOut{
+        width: 450px;
+    }
+    #checkOutBtn{
+        margin-left: 120px;
+    }
+    .checkOut-title h6, .checkOut-value p{
+        width: 250px;
+        margin-left: 40px;
+    }
+    .checkOut-value p{
+        font-size: 12px;
+    }
+    .checkOut-title{
+        margin-bottom: 15px;
+    }
+}

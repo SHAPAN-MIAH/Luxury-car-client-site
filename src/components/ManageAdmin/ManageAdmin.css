@@ -1,0 +1,42 @@
+.manageAdmin-panel{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr)
+}
+.carManageContainer{
+    width: 850px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0  0 2px rgb(255,255,255),
+                0.3em 0.3em 1em rgba(0,0,0,0.3); 
+}
+.carManageContainer strong{
+    padding: 81px;
+}
+.managePanel-title{
+    margin: 20px 0px;
+    padding: 5px 0px;
+    background: lightseagreen;
+    color: rgb(236, 236, 236);
+    box-shadow: 0.3em 0.3em 1em rgba(0,0,0,0.3); 
+}
+.manageTitle{
+    color: rgb(100, 100, 100);
+    font-family: sans-serif;
+    font-weight: 700;
+    margin-left: 20px;
+    margin-top: 15px;
+}
+
+
+@media(max-width: 768px){
+    .manageAdmin-panel{
+        grid-template-columns: 1fr;
+    }
+    .carManageContainer{
+        width: 450px;
+    }
+    .carManageContainer strong{
+        padding: 32px;
+    }
+}

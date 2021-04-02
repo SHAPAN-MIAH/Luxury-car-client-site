@@ -1,0 +1,29 @@
+.cars-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 25px;
+    
+}
+.homeTitle{
+    text-align: center;
+    margin: 50px 0px;
+    font-family: sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: rgb(95, 95, 95);
+}
+.homeTitle span{
+    color: lightseagreen;
+}
+footer{
+    text-align: center;
+    padding: 50px 0px;
+    
+}
+
+@media(max-width: 768px){
+    .cars-container{
+        grid-template-columns: 1fr;
+        
+    }
+}

@@ -1,0 +1,20 @@
+.orderContainer{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 20px;
+}
+.orderTitle{
+    margin-top: 50px;
+    margin-left: 30px;
+    font-weight: 700;
+    color: rgb(100, 100, 100);
+}
+.orders-contain{
+    margin-bottom: 50px;
+}
+
+@media(max-width: 768px){
+    .orderContainer{
+        grid-template-columns: 1fr;
+    }
+}

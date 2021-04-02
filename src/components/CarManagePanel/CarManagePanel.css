@@ -1,0 +1,33 @@
+
+.carManageDtl td{
+    width: 220px;
+    padding: 15px 10px;
+}
+.carManageDtl table{
+    margin-left: 54px;
+}
+.carManageDtl{
+    margin-bottom: 30px;
+}
+.editIcon{
+    color: lightseagreen;
+    cursor: pointer;
+    
+}
+.deleteIcon{
+    color: red;
+    margin-left: 8px;
+    cursor: pointer;
+    
+}
+
+@media(max-width: 768px){
+    .carManageDtl td{
+        width: 113px;
+        padding: 15px 0px;
+        font-size: 13px;
+    }
+    .carManageDtl table{
+        margin-left: 32px;
+    }
+}
