@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useParams } from 'react-router';
-import { useContext } from 'react/cjs/react.development';
+import { useParams } from 'react-router-dom';
+import { useContext } from 'react';
 import { UserContext } from '../../App';
 import './CheckOut.css'
 
@@ -35,17 +35,17 @@ const CheckOut = () => {
             <h3 className="checkTitle">CheckOut</h3>
             <div className="checkOut">
             
-            <div className="checkOut-title">
-                <h6>Name</h6>
-                <h6>Model</h6>
-                <h6>Price</h6>
-            </div>
-            <div className="checkOut-value">
-            <p>{name}</p>
-            <p>{model}</p>
-            <p>${price}</p>
-            </div>
-            <button onClick={handelCheckOut} id="checkOutBtn">CheckOut</button>
+                <div className="checkOut-title">
+                    <h6>Name</h6>
+                    <h6>Model</h6>
+                    <h6>Price</h6>
+                </div>
+                <div className="checkOut-value">
+                    <p>{name}</p>
+                    <p>{model}</p>
+                    <p>${price}</p>
+                </div>
+                <button onClick={handelCheckOut} id="checkOutBtn">CheckOut</button>
             </div>
             
         </div>

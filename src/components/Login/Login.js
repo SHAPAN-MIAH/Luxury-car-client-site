@@ -3,10 +3,10 @@ import './Login.css'
 import firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from './firebaseConfig';
-import { useHistory, useLocation } from 'react-router';
+import { useHistory, useLocation } from 'react-router-dom';
 import { UserContext } from '../../App';
 import { useContext } from 'react';
-import { useState } from 'react/cjs/react.development';
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 
@@ -46,6 +46,7 @@ const Login = () => {
             const signedInUser = {name: displayName, email};
             setUser(signedInUser);
             setLoggedInUser(signedInUser);
+            storeAuthToken();
             history.replace(from);
         }).catch((error) => {
             console.log(error)
@@ -55,32 +56,48 @@ const Login = () => {
 
     // Email & password sign in method..................
     const handelBlur = (event)=> {
-        let isFormValid = true;
-        if(event.target.name === "email"){
-          isFormValid = /\S+@\S+\.\S+/.test(event.target.value);
-          
-        }
-        if(event.target.name === "password"){
-          const isPasswordValid = event.target.value.length > 6;
-          const passwordHasNumber = /\d{1}/.test(event.target.value);
-          isFormValid = isPasswordValid && passwordHasNumber;
-        }
-        if(event.target.name === "name") {
-          isFormValid = event.target.value.length > 8;
-          
-        }
-        if(isFormValid){
-          let newUserInfo = {...user};
-          newUserInfo[event.target.name] = event.target.value;
-          setUser(newUserInfo);
-          
-        }
+      let isFormValid = true;
+      if(event.target.name === "email"){
+        isFormValid = /\S+@\S+\.\S+/.test(event.target.value);
+        
       }
+      if(event.target.name === "password"){
+        const isPasswordValid = event.target.value.length > 6;
+        const passwordHasNumber = /\d{1}/.test(event.target.value);
+        isFormValid = isPasswordValid && passwordHasNumber;
+      }
+      
+      // if(event.target.name === "confirmPassword"){
+      //   console.log(event.target.value)
+      //   const pass = 
+      // }
+      if(event.target.name === "confirmPassword") {
+        const pwd = document.getElementById('pwd').value;
+        const pwdConfirm = document.getElementById('pwdConfirm').value;
+       
+        // console.log("pwd: " + pwd);
+        // const pwdConfirm = event.target.value;
+        // console.log(pwdConfirm);
+        isFormValid = pwdConfirm === pwd;
+
+      }
+
+      if(event.target.name === "name") {
+        isFormValid = event.target.value.length > 8;
+        
+      }
+      if(isFormValid){
+        let newUserInfo = {...user};
+        newUserInfo[event.target.name] = event.target.value;
+        setUser(newUserInfo);
+        
+      }
+      
+    }
 
 
       const handelSubmit = (e) => {
-          console.log("clicked")
-        if(newUser && user.name && user.email && user.password && user.confirmPassword){
+        if( user.name && user.email && user.password && user.confirmPassword){
           firebase.auth().createUserWithEmailAndPassword(user.email, user.password, user.confirmPassword)
           .then((res) => {
             const newUserInfo = {...user};
@@ -102,8 +119,8 @@ const Login = () => {
           });
   
         }
-        if(!newUser && user.email && user.password && user.confirmPassword){
-          firebase.auth().signInWithEmailAndPassword(user.email, user.password, user.confirmPassword)
+        if(!newUser && user.email && user.password){
+          firebase.auth().signInWithEmailAndPassword(user.email, user.password)
           .then((res) => {
             const newUserInfo = {...user};
             newUserInfo.error = "";
@@ -126,16 +143,25 @@ const Login = () => {
 
     
     const updateUserName = name => {
-        var user = firebase.auth().currentUser;
-        user.updateProfile({
-          displayName: name
-        }).then(function() {
-          console.log('user name Update successful.') 
-        }).catch(function(error) {
-          console.log(error)
-        });
-      }
+      var user = firebase.auth().currentUser;
+      user.updateProfile({
+        displayName: name
+      }).then(function() {
+        console.log('user name Update successful.') 
+      }).catch(function(error) {
+        console.log(error)
+      });
+    }
 
+
+    const storeAuthToken = () => {
+      firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)
+      .then(function(idToken) {
+        sessionStorage.setItem('token', idToken)
+      }).catch(function(error) {
+        // Handle error
+      });
+    }
 
     return (
         <div className="container login-container">
@@ -146,9 +172,9 @@ const Login = () => {
                   <br/>
                   <input  type="email" onBlur={handelBlur} name="email"  placeholder="Your email" required/>
                   <br/>
-                  <input  type="password" onBlur={handelBlur} name="password" placeholder="Password" required/>
+                  <input  type="password" onBlur={handelBlur} name="password" id="pwd" placeholder="Password" required/>
                   <br/>
-                  <input  type="password" onBlur={handelBlur} name="confirmPassword" placeholder="Confirm Password" required/>
+                  {newUser && <input  type="password" onBlur={handelBlur} name="confirmPassword" id="pwdConfirm" placeholder="Confirm Password" required/>}
                   <br/>
                   <input id="submitBtn" type="submit" value={newUser ? 'Create an account' : 'Login'}/>
               </form>

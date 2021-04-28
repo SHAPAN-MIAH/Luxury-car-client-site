@@ -1,10 +1,9 @@
-import './App.css';
 import React from "react";
+import './App.css';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
@@ -17,6 +16,8 @@ import { createContext } from 'react';
 import { useState } from 'react';
 import PrivetRoute from './components/PrivetRoute/PrivetRoute';
 import CheckOut from './components/CheckOut/CheckOut';
+import NoMatch from "./components/NoMatch/NoMatch";
+
 
 export const UserContext = createContext();
 
@@ -53,7 +54,7 @@ function App() {
                 <Home />
               </Route>
               <Route path="*">
-                
+                <NoMatch/>
               </Route>
             </Switch>
         </Router>
